@@ -21,30 +21,30 @@ namespace Nuclei.Diagnostics.Logging.NLog
         private static Target BuildFileTarget(string filePath)
         {
             var fileTarget = new FileTarget
-                {
-                    // Only write the message. The message should contain all the important
-                    // information anyway.
-                    Layout = "${message}",
+            {
+                // Only write the message. The message should contain all the important
+                // information anyway.
+                Layout = "${message}",
 
-                    // Get the file path for the log file.
-                    FileName = filePath,
+                // Get the file path for the log file.
+                FileName = filePath,
 
-                    // Create the directories if needed
-                    CreateDirs = true,
+                // Create the directories if needed
+                CreateDirs = true,
 
-                    // Automatically flush each message to the file
-                    AutoFlush = true,
+                // Automatically flush each message to the file
+                AutoFlush = true,
 
-                    // Always close the file so that we don't lose messages
-                    // this does make logging slower though.
-                    KeepFileOpen = false,
+                // Always close the file so that we don't lose messages
+                // this does make logging slower though.
+                KeepFileOpen = false,
 
-                    // Always append to the file
-                    ReplaceFileContentsOnEachWrite = false,
+                // Always append to the file
+                ReplaceFileContentsOnEachWrite = false,
 
-                    // Do not concurrently write to the logger (at least for now)
-                    ConcurrentWrites = false,
-                };
+                // Do not concurrently write to the logger (at least for now)
+                ConcurrentWrites = false,
+            };
 
             return fileTarget;
         }
@@ -53,7 +53,7 @@ namespace Nuclei.Diagnostics.Logging.NLog
         {
             var eventLogTarget = new EventLogTarget
             {
-                // Only write the message. The message should contain all the important 
+                // Only write the message. The message should contain all the important
                 // information anyway.
                 Layout = "${longdate}|${level:uppercase=true}|${logger}|${message}",
 
@@ -90,7 +90,7 @@ namespace Nuclei.Diagnostics.Logging.NLog
                 result.ThrowExceptions = true;
             }
 
-            result.EnableLogging(); 
+            result.ResumeLogging();
             return result;
         }
 
@@ -104,10 +104,18 @@ namespace Nuclei.Diagnostics.Logging.NLog
         /// <returns>
         /// The newly created logger that logs information to a given file.
         /// </returns>
+        /// <exception cref="ArgumentNullException">
+        ///     Thrown if <paramref name="template"/> is <see langword="null" />.
+        /// </exception>
         public static ILogger ForFile(string filePath, ILogTemplate template, string applicationName = null, Version applicationVersion = null)
         {
+            if (template == null)
+            {
+                throw new ArgumentNullException("template");
+            }
+
             var factory = BuildLogFactory(template.Name, LogLevel.Trace, BuildFileTarget(filePath));
-            return new Logger(factory, template, applicationName, applicationVersion);
+            return new NLogLogger(factory, template, applicationName, applicationVersion);
         }
 
         /// <summary>
@@ -120,14 +128,22 @@ namespace Nuclei.Diagnostics.Logging.NLog
         /// <returns>
         /// The newly created logger that logs information to the event log.
         /// </returns>
+        /// <exception cref="ArgumentNullException">
+        ///     Thrown if <paramref name="template"/> is <see langword="null" />.
+        /// </exception>
         public static ILogger ForEventLog(
-            string eventLogSource, 
-            ILogTemplate template, 
-            string applicationName = null, 
+            string eventLogSource,
+            ILogTemplate template,
+            string applicationName = null,
             Version applicationVersion = null)
         {
+            if (template == null)
+            {
+                throw new ArgumentNullException("template");
+            }
+
             var factory = BuildLogFactory(template.Name, LogLevel.Warn, BuildEventLogTarget(eventLogSource));
-            return new Logger(factory, template, applicationName, applicationVersion);
+            return new NLogLogger(factory, template, applicationName, applicationVersion);
         }
     }
 }

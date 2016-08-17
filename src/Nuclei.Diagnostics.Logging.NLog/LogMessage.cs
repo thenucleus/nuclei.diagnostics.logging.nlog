@@ -8,7 +8,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Nuclei.Diagnostics.Properties;
+using Nuclei.Diagnostics.Logging.NLog.Properties;
 
 namespace Nuclei.Diagnostics.Logging.NLog
 {
@@ -21,12 +21,12 @@ namespace Nuclei.Diagnostics.Logging.NLog
         /// <summary>
         /// The collection that stores the properties for the message.
         /// </summary>
-        private readonly IDictionary<string, object> m_Properties;
+        private readonly IDictionary<string, object> _properties;
 
         /// <summary>
         /// The text for the log message.
         /// </summary>
-        private readonly string m_Text;
+        private readonly string _text;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LogMessage"/> class.
@@ -58,14 +58,19 @@ namespace Nuclei.Diagnostics.Logging.NLog
         /// </exception>
         public LogMessage(LevelToLog level, string text, IDictionary<string, object> properties)
         {
+            if (level == LevelToLog.None)
             {
-                Lokad.Enforce.With<ArgumentException>(level != LevelToLog.None, Resources.Exceptions_Messages_CannotLogMessageWithLogLevelSetToNone);
-                Lokad.Enforce.Argument(() => text);
+                throw new ArgumentException(Resources.Exceptions_Messages_CannotLogMessageWithLogLevelSetToNone);
+            }
+
+            if (text == null)
+            {
+                throw new ArgumentNullException("text");
             }
 
             Level = level;
-            m_Text = text;
-            m_Properties = properties;
+            _text = text;
+            _properties = properties;
         }
 
         /// <summary>
@@ -86,7 +91,7 @@ namespace Nuclei.Diagnostics.Logging.NLog
         /// </returns>
         public string Text()
         {
-            return m_Text;
+            return _text;
         }
 
         /// <summary>
@@ -98,7 +103,7 @@ namespace Nuclei.Diagnostics.Logging.NLog
             [DebuggerStepThrough]
             get
             {
-                return m_Properties != null;
+                return _properties != null;
             }
         }
 
@@ -111,7 +116,7 @@ namespace Nuclei.Diagnostics.Logging.NLog
             [DebuggerStepThrough]
             get
             {
-                return m_Properties;
+                return _properties;
             }
         }
     }

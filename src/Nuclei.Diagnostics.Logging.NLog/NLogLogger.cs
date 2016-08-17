@@ -18,7 +18,7 @@ namespace Nuclei.Diagnostics.Logging.NLog
     /// Defines a logging object that translates <see cref="ILogMessage"/> objects and
     /// writes them to a log.
     /// </summary>
-    public sealed class Logger : ILogger
+    public sealed class NLogLogger : ILogger
     {
         /// <summary>
         /// Translates from NLog level to the apollo log level.
@@ -27,7 +27,7 @@ namespace Nuclei.Diagnostics.Logging.NLog
         /// <returns>
         /// The <see cref="LevelToLog"/>.
         /// </returns>
-        private static LevelToLog TranslateFromNlogLevel(NLog.Logger logger)
+        private static LevelToLog TranslateFromNlogLevel(Logger logger)
         {
             if (logger.IsTraceEnabled)
             {
@@ -62,7 +62,7 @@ namespace Nuclei.Diagnostics.Logging.NLog
         /// </summary>
         /// <param name="levelToLog">The log level.</param>
         /// <returns>
-        /// The <see cref="NLog.LogLevel"/>.
+        /// The LogLevel.
         /// </returns>
         private static LogLevel TranslateToNlogLevel(LevelToLog levelToLog)
         {
@@ -90,20 +90,20 @@ namespace Nuclei.Diagnostics.Logging.NLog
         /// <summary>
         /// The log factory that is used to create the logger.
         /// </summary>
-        private readonly LogFactory m_Factory;
+        private readonly LogFactory _factory;
 
         /// <summary>
         /// The logger that performs the actual logging of the log messages.
         /// </summary>
-        private readonly NLog.Logger m_Logger;
+        private readonly Logger _logger;
 
         /// <summary>
         /// The log template that is used to translate log messages.
         /// </summary>
-        private readonly ILogTemplate m_Template;
+        private readonly ILogTemplate _template;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Logger"/> class.
+        /// Initializes a new instance of the <see cref="NLogLogger"/> class.
         /// </summary>
         /// <param name="factory">The log factory.</param>
         /// <param name="template">The template.</param>
@@ -115,39 +115,44 @@ namespace Nuclei.Diagnostics.Logging.NLog
         /// <exception cref="ArgumentNullException">
         /// Thrown if <paramref name="template"/> is <see langword="null"/>.
         /// </exception>
-        internal Logger(LogFactory factory, ILogTemplate template, string applicationName = null, Version applicationVersion = null)
+        internal NLogLogger(LogFactory factory, ILogTemplate template, string applicationName = null, Version applicationVersion = null)
         {
+            if (factory == null)
             {
-                Lokad.Enforce.Argument(() => factory);
-                Lokad.Enforce.Argument(() => template);
+                throw new ArgumentNullException("factory");
             }
 
-            m_Template = template;
-            m_Factory = factory;
+            if (template == null)
             {
-                m_Factory.GlobalThreshold = TranslateToNlogLevel(template.DefaultLogLevel());
+                throw new ArgumentNullException("template");
             }
 
-            m_Logger = m_Factory.GetLogger(template.Name);
+            _template = template;
+            _factory = factory;
+            {
+                _factory.GlobalThreshold = TranslateToNlogLevel(template.DefaultLogLevel());
+            }
+
+            _logger = _factory.GetLogger(template.Name);
 
             // log this at the highest level possible so that it always goes in
             var separationLine = "============================================================================";
-            m_Logger.Fatal(separationLine);
+            _logger.Fatal(separationLine);
 
             var openingText = string.Format(CultureInfo.InvariantCulture, "Starting {0} logger.", template.Name);
-            m_Logger.Fatal(template.Translate(new LogMessage(LevelToLog.Info, openingText)));
+            _logger.Fatal(template.Translate(new LogMessage(LevelToLog.Info, openingText)));
 
             var assembly = Assembly.GetEntryAssembly();
-            if (((applicationName != null) && (applicationVersion != null)) 
+            if (((applicationName != null) && (applicationVersion != null))
                 || (((applicationName == null) && (applicationVersion == null)) && (assembly != null)))
             {
-                var versionInfoText = 
+                var versionInfoText =
                     string.Format(
-                        CultureInfo.InvariantCulture, 
+                        CultureInfo.InvariantCulture,
                         "{0} - {1}",
                         applicationName ?? assembly.GetName().Name,
                         applicationVersion ?? assembly.GetName().Version);
-                m_Logger.Info(template.Translate(new LogMessage(LevelToLog.Info, versionInfoText)));
+                _logger.Info(template.Translate(new LogMessage(LevelToLog.Info, versionInfoText)));
             }
         }
 
@@ -159,14 +164,14 @@ namespace Nuclei.Diagnostics.Logging.NLog
             [DebuggerStepThrough]
             get
             {
-                return TranslateFromNlogLevel(m_Logger);
+                return TranslateFromNlogLevel(_logger);
             }
 
             [DebuggerStepThrough]
             set
             {
                 var nlogLevel = TranslateToNlogLevel(value);
-                m_Factory.GlobalThreshold = nlogLevel;
+                _factory.GlobalThreshold = nlogLevel;
             }
         }
 
@@ -178,7 +183,9 @@ namespace Nuclei.Diagnostics.Logging.NLog
         /// <returns>
         /// <see langword="true" /> if the message will be logged; otherwise, <see langword="false" />.
         /// </returns>
-        [SuppressMessage("Microsoft.StyleCop.CSharp.DocumentationRules", "SA1628:DocumentationTextMustBeginWithACapitalLetter",
+        [SuppressMessage(
+            "Microsoft.StyleCop.CSharp.DocumentationRules",
+            "SA1628:DocumentationTextMustBeginWithACapitalLetter",
             Justification = "Documentation can start with a language keyword")]
         public bool ShouldLog(ILogMessage message)
         {
@@ -204,6 +211,11 @@ namespace Nuclei.Diagnostics.Logging.NLog
         /// Logs the specified message.
         /// </summary>
         /// <param name="message">The message.</param>
+        [SuppressMessage(
+            "Microsoft.Design",
+            "CA1062:Validate arguments of public methods",
+            MessageId = "0",
+            Justification = "The 'ShouldLog' method validates the message.")]
         public void Log(ILogMessage message)
         {
             if (!ShouldLog(message))
@@ -212,7 +224,7 @@ namespace Nuclei.Diagnostics.Logging.NLog
             }
 
             var level = TranslateToNlogLevel(message.Level);
-            var info = new LogEventInfo(level, m_Template.Name, m_Template.Translate(message));
+            var info = new LogEventInfo(level, _template.Name, _template.Translate(message));
             if (message.HasAdditionalInformation)
             {
                 foreach (var pair in message.Properties)
@@ -221,17 +233,17 @@ namespace Nuclei.Diagnostics.Logging.NLog
                 }
             }
 
-            m_Logger.Log(info);
+            _logger.Log(info);
         }
 
         /// <summary>
-        /// Stops the logger and ensures that all log messages have been 
+        /// Stops the logger and ensures that all log messages have been
         /// saved to the log.
         /// </summary>
         public void Close()
         {
-            m_Logger.Fatal(m_Template.Translate(new LogMessage(LevelToLog.Info, "Stopping logger.")));
-            m_Logger.Factory.Flush();
+            _logger.Fatal(_template.Translate(new LogMessage(LevelToLog.Info, "Stopping logger.")));
+            _logger.Factory.Flush();
         }
 
         /// <summary>
