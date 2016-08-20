@@ -638,8 +638,8 @@
         <!--
             The locations of the files that should be analyzed by FxCop.
         -->
-        <FxCopFiles Include="$(DirSrc)\**\bin\**\nuclei.diagnostics.logging.nlog.dll"
-                    Exclude="$(DirSrc)\**\bin\**\Test.*.dll">
+        <FxCopFiles Include="$(DirSrc)\**\bin\$(Configuration)\nuclei.diagnostics.logging.nlog.dll"
+                    Exclude="$(DirSrc)\**\bin\$(Configuration)\Test.*.dll">
             <TargetFramework>4.0</TargetFramework>
         </FxCopFiles>
     </ItemGroup>
