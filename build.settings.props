@@ -346,12 +346,10 @@
         Additional parameters can be provided through the 'TemplateTokens' ItemGroup below.
     -->
     <ItemGroup>
-        <!--
-        <BuildFilesToGenerate Include="$(DirDoc)\Nuclei.Diagnostics.Documentation\docfx.json">
-            <Template>$(DirDoc)\Nuclei.Configuration.Documentation\template.docfx.json</Template>
+        <BuildFilesToGenerate Include="$(DirDoc)\Nuclei.Diagnostics.Logging.NLog.Documentation\docfx.json">
+            <Template>$(DirDoc)\Nuclei.Diagnostics.Logging.NLog.Documentation\template.docfx.json</Template>
             <Encoding>UTF-8</Encoding>
         </BuildFilesToGenerate>
-        -->
     </ItemGroup>
 
 
