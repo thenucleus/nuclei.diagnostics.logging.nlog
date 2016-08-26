@@ -1,11 +1,10 @@
-# Nuclei.Diagnostics
+# Nuclei.Diagnostics.Logging.NLog
 
 
-## DebugLogTemplate
+## LoggerBuilders
 
+The `LoggerBuilder` class provides static methods to get a logger that can be used to log to the event log or to a file.
 
-## SystemDiagnostics
+[!code-csharp[LoggerBuilder.ForEventLog](..\..\Nuclei.Diagnostics.Logging.NLog.Samples\LoggerBuilderSample.cs?range=21-28)]
 
-The `SystemDiagnostics` class provides a convenient way to distribute references to both `Ilogger` and `IMetricsCollector` instances. This allows
-
-[!code-csharp[SystemDiagnostics.Log](..\..\Nuclei.Diagnostics.Samples\SystemDiagnosticsSample.cs?range=21-34)]
+[!code-csharp[LoggerBuilder.ForFile](..\..\Nuclei.Diagnostics.Logging.NLog.Samples\LoggerBuilderSample.cs?range=37-44)]
