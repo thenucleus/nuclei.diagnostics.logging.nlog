@@ -6,7 +6,6 @@
 //-----------------------------------------------------------------------
 
 using System;
-using Nuclei.Configuration;
 using NUnit.Framework;
 
 namespace Nuclei.Diagnostics.Logging.NLog.Samples
@@ -18,12 +17,9 @@ namespace Nuclei.Diagnostics.Logging.NLog.Samples
         [Ignore("Implemented but not runable. Just here so that we can get a documentation sample.")]
         public void ForEventLog()
         {
-            var template = new DebugLogTemplate(
-                new NullConfiguration(),
-                () => DateTimeOffset.Now);
             var logger = LoggerBuilder.ForEventLog(
                 "MyEventLog",
-                template,
+                "MyLogger",
                 "MyApplication",
                 new Version(1, 0, 0, 0));
 
@@ -34,12 +30,9 @@ namespace Nuclei.Diagnostics.Logging.NLog.Samples
         [Ignore("Implemented but not runable. Just here so that we can get a documentation sample.")]
         public void ForFile()
         {
-            var template = new DebugLogTemplate(
-                new NullConfiguration(),
-                () => DateTimeOffset.Now);
             var logger = LoggerBuilder.ForFile(
                 @"c:\temp\log.txt",
-                template,
+                "MyLogger",
                 "MyApplication",
                 new Version(1, 0, 0, 0));
 
