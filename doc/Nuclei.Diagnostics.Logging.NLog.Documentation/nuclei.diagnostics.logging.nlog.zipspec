@@ -4,6 +4,6 @@
     <files>
         <file src="${DirWorkspace}\readme.md" target="" />
         <file src="${DirWorkspace}\license.md" target="" />
-        <file src="${DirDoc}\nuclei.diagnostics.documentation\_site\**\*.*" target="" />
+        <file src="${DirDoc}\nuclei.diagnostics.logging.nlog.documentation\_site\**\*.*" target="" />
     </files>
 </archive>
