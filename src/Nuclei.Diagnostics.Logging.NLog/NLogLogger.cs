@@ -242,7 +242,7 @@ namespace Nuclei.Diagnostics.Logging.NLog
         /// </summary>
         public void Close()
         {
-            _logger.Fatal(_template.Translate(new LogMessage(LevelToLog.Info, "Stopping logger.")));
+            _logger.Info(_template.Translate(new LogMessage(LevelToLog.Info, "Stopping logger.")));
             _logger.Factory.Flush();
         }
 

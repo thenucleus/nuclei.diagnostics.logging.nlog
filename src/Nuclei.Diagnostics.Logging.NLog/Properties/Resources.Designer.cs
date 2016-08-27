@@ -59,14 +59,5 @@ namespace Nuclei.Diagnostics.Logging.NLog.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to It is not possible to log a message if the LogLevel is set to None..
-        /// </summary>
-        internal static string Exceptions_Messages_CannotLogMessageWithLogLevelSetToNone {
-            get {
-                return ResourceManager.GetString("Exceptions_Messages_CannotLogMessageWithLogLevelSetToNone", resourceCulture);
-            }
-        }
     }
 }
