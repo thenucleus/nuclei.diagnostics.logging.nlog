@@ -59,5 +59,14 @@ namespace Nuclei.Diagnostics.Logging.NLog.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The parameter should not be an empty string..
+        /// </summary>
+        internal static string Exceptions_Messages_ParameterShouldNotBeAnEmptyString {
+            get {
+                return ResourceManager.GetString("Exceptions_Messages_ParameterShouldNotBeAnEmptyString", resourceCulture);
+            }
+        }
     }
 }

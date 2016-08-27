@@ -10,6 +10,7 @@ using System.Globalization;
 using NLog;
 using NLog.Config;
 using NLog.Targets;
+using Nuclei.Diagnostics.Logging.NLog.Properties;
 
 namespace Nuclei.Diagnostics.Logging.NLog
 {
@@ -92,6 +93,15 @@ namespace Nuclei.Diagnostics.Logging.NLog
         /// <exception cref="ArgumentNullException">
         ///     Thrown if <paramref name="loggerName"/> is <see langword="null" />.
         /// </exception>
+        /// <exception cref="ArgumentException">
+        ///     Thrown if <paramref name="loggerName"/> is an empty string.
+        /// </exception>
+        /// <exception cref="ArgumentNullException">
+        ///     Thrown if <paramref name="filePath"/> is <see langword="null" />.
+        /// </exception>
+        /// <exception cref="ArgumentException">
+        ///     Thrown if <paramref name="filePath"/> is an empty string.
+        /// </exception>
         public static ILogger ForFile(string loggerName, string filePath, string applicationName = null, Version applicationVersion = null)
         {
             if (loggerName == null)
@@ -101,7 +111,17 @@ namespace Nuclei.Diagnostics.Logging.NLog
 
             if (string.IsNullOrWhiteSpace(loggerName))
             {
-                throw new ArgumentException();
+                throw new ArgumentException(Resources.Exceptions_Messages_ParameterShouldNotBeAnEmptyString, "loggerName");
+            }
+
+            if (filePath == null)
+            {
+                throw new ArgumentNullException("loggerName");
+            }
+
+            if (string.IsNullOrWhiteSpace(filePath))
+            {
+                throw new ArgumentException(Resources.Exceptions_Messages_ParameterShouldNotBeAnEmptyString, "filePath");
             }
 
             var fileTarget = new FileTarget
