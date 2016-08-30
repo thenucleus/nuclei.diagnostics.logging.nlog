@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Nuclei.Diagnostics.Logging.NLog </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Nuclei.Diagnostics.Logging.NLog ">
+    <meta name="generator" content="docfx 2.3.0.0">
+    
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta property="docfx:navrel" content="toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+              <a href="https://github.com/thenucleus/nuclei.diagnostics.logging.nlog/blob/release/0.1.0/doc/Nuclei.Diagnostics.Logging.NLog.Documentation/index.md/#L1" class="btn btn-primary pull-right mobile-hide">Improve this Doc</a>
+              <h1 id="nuclei-diagnostics-logging-nlog">Nuclei.Diagnostics.Logging.NLog</h1>
+              
+<p>Nuclei is a collection of libraries containing classes and functions for inter-application interaction via a command mechanism, diagnostics, configuration handling, exception handling and assembly location and loading.
+The &#39;Nuclei.Diagnostics.Logging.NLog&#39; assembly contains a set of classes and interfaces that allow using <a href="http://nlog-project.org/">NLog</a> as logger with <code>Nuclei.Diagnostics</code>.</p>
+<h2 id="installation-instructions">Installation instructions</h2>
+<p>All libraries are available on <a href="https://www.nuget.org/packages/Nuclei.Diagnostics.Logging.NLog/">NuGet.org</a>.</p>
+<h2 id="how-to-build">How to build</h2>
+<p>The solution files are created in Visual Studio 2013 (using .NET 4.0) and the assemblies can be build either from Visual Studio or through the build script.
+To invoke the build script use the following command line from the workspace directory (assuming MsBuild is on the PATH)</p>
+<pre><code>msbuild entrypoint.msbuild /t:build
+</code></pre><p>This will build the binaries and the NuGet package. The NuGet package will be placed in the <code>build\deploy</code> directory.</p>
+<p>Note that the build scripts assume that:</p>
+<ul>
+<li>The binaries should be signed, however the SNK key file is not included in the repository so a new key file has to be <a href="http://msdn.microsoft.com/en-us/library/6f05ezxy(v=vs.110).aspx">created</a>. The key file is referenced
+through an environment variable called <code>SOFTWARE_SIGNING_KEY_PATH</code> that has as value the directory path of the key file. The key file is expected to be called <code>nuclei.snk</code></li>
+<li>GIT can be found on the PATH somewhere so that it can be called to get the hash of the last commit in the current repository. This hash is embedded in the assemblies together
+with information about the build configuration and build time and date.</li>
+</ul>
+<h2 id="how-to-contribute">How to contribute</h2>
+<p>There are a few ways to contribute:</p>
+<ul>
+<li>By opening an issue on the project.</li>
+<li>By provide a pull-request for a new feature or a bug.</li>
+</ul>
+<p>Any suggestions or improvements you may have are more than welcome.</p>
+
+            </article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+            <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+            </nav>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright (c) - TheNucleus 2016 - 2016. All rights reserved.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>

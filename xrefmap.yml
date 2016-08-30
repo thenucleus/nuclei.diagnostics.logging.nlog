@@ -1,0 +1,73 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: Nuclei.Diagnostics.Logging.NLog
+  name: Nuclei.Diagnostics.Logging.NLog
+  href: api/Nuclei.Diagnostics.Logging.NLog.html#Nuclei_Diagnostics_Logging_NLog
+  commentId: N:Nuclei.Diagnostics.Logging.NLog
+  fullName: Nuclei.Diagnostics.Logging.NLog
+- uid: Nuclei.Diagnostics.Logging.NLog.AdditionalLogMessageProperties
+  name: AdditionalLogMessageProperties
+  href: api/Nuclei.Diagnostics.Logging.NLog.AdditionalLogMessageProperties.html#Nuclei_Diagnostics_Logging_NLog_AdditionalLogMessageProperties
+  commentId: T:Nuclei.Diagnostics.Logging.NLog.AdditionalLogMessageProperties
+  fullName: Nuclei.Diagnostics.Logging.NLog.AdditionalLogMessageProperties
+- uid: Nuclei.Diagnostics.Logging.NLog.AdditionalLogMessageProperties.EventCategory
+  name: EventCategory
+  href: api/Nuclei.Diagnostics.Logging.NLog.AdditionalLogMessageProperties.html#Nuclei_Diagnostics_Logging_NLog_AdditionalLogMessageProperties_EventCategory
+  commentId: F:Nuclei.Diagnostics.Logging.NLog.AdditionalLogMessageProperties.EventCategory
+  fullName: Nuclei.Diagnostics.Logging.NLog.AdditionalLogMessageProperties.EventCategory
+- uid: Nuclei.Diagnostics.Logging.NLog.AdditionalLogMessageProperties.EventId
+  name: EventId
+  href: api/Nuclei.Diagnostics.Logging.NLog.AdditionalLogMessageProperties.html#Nuclei_Diagnostics_Logging_NLog_AdditionalLogMessageProperties_EventId
+  commentId: F:Nuclei.Diagnostics.Logging.NLog.AdditionalLogMessageProperties.EventId
+  fullName: Nuclei.Diagnostics.Logging.NLog.AdditionalLogMessageProperties.EventId
+- uid: Nuclei.Diagnostics.Logging.NLog.LoggerBuilder
+  name: LoggerBuilder
+  href: api/Nuclei.Diagnostics.Logging.NLog.LoggerBuilder.html#Nuclei_Diagnostics_Logging_NLog_LoggerBuilder
+  commentId: T:Nuclei.Diagnostics.Logging.NLog.LoggerBuilder
+  fullName: Nuclei.Diagnostics.Logging.NLog.LoggerBuilder
+- uid: Nuclei.Diagnostics.Logging.NLog.LoggerBuilder.ForEventLog(System.String,System.String,System.String,System.Version)
+  name: ForEventLog(String, String, String, Version)
+  href: api/Nuclei.Diagnostics.Logging.NLog.LoggerBuilder.html#Nuclei_Diagnostics_Logging_NLog_LoggerBuilder_ForEventLog_System_String_System_String_System_String_System_Version_
+  commentId: M:Nuclei.Diagnostics.Logging.NLog.LoggerBuilder.ForEventLog(System.String,System.String,System.String,System.Version)
+  fullName: Nuclei.Diagnostics.Logging.NLog.LoggerBuilder.ForEventLog(System.String, System.String, System.String, System.Version)
+- uid: Nuclei.Diagnostics.Logging.NLog.LoggerBuilder.ForFile(System.String,System.String,System.String,System.Version)
+  name: ForFile(String, String, String, Version)
+  href: api/Nuclei.Diagnostics.Logging.NLog.LoggerBuilder.html#Nuclei_Diagnostics_Logging_NLog_LoggerBuilder_ForFile_System_String_System_String_System_String_System_Version_
+  commentId: M:Nuclei.Diagnostics.Logging.NLog.LoggerBuilder.ForFile(System.String,System.String,System.String,System.Version)
+  fullName: Nuclei.Diagnostics.Logging.NLog.LoggerBuilder.ForFile(System.String, System.String, System.String, System.Version)
+- uid: Nuclei.Diagnostics.Logging.NLog.LoggerBuilder.FromConfiguration(System.String,System.String,System.Version)
+  name: FromConfiguration(String, String, Version)
+  href: api/Nuclei.Diagnostics.Logging.NLog.LoggerBuilder.html#Nuclei_Diagnostics_Logging_NLog_LoggerBuilder_FromConfiguration_System_String_System_String_System_Version_
+  commentId: M:Nuclei.Diagnostics.Logging.NLog.LoggerBuilder.FromConfiguration(System.String,System.String,System.Version)
+  fullName: Nuclei.Diagnostics.Logging.NLog.LoggerBuilder.FromConfiguration(System.String, System.String, System.Version)
+- uid: Nuclei.Diagnostics.Logging.NLog.NLogLogger
+  name: NLogLogger
+  href: api/Nuclei.Diagnostics.Logging.NLog.NLogLogger.html#Nuclei_Diagnostics_Logging_NLog_NLogLogger
+  commentId: T:Nuclei.Diagnostics.Logging.NLog.NLogLogger
+  fullName: Nuclei.Diagnostics.Logging.NLog.NLogLogger
+- uid: Nuclei.Diagnostics.Logging.NLog.NLogLogger.Close
+  name: Close()
+  href: api/Nuclei.Diagnostics.Logging.NLog.NLogLogger.html#Nuclei_Diagnostics_Logging_NLog_NLogLogger_Close
+  commentId: M:Nuclei.Diagnostics.Logging.NLog.NLogLogger.Close
+  fullName: Nuclei.Diagnostics.Logging.NLog.NLogLogger.Close()
+- uid: Nuclei.Diagnostics.Logging.NLog.NLogLogger.Dispose
+  name: Dispose()
+  href: api/Nuclei.Diagnostics.Logging.NLog.NLogLogger.html#Nuclei_Diagnostics_Logging_NLog_NLogLogger_Dispose
+  commentId: M:Nuclei.Diagnostics.Logging.NLog.NLogLogger.Dispose
+  fullName: Nuclei.Diagnostics.Logging.NLog.NLogLogger.Dispose()
+- uid: Nuclei.Diagnostics.Logging.NLog.NLogLogger.Level
+  name: Level
+  href: api/Nuclei.Diagnostics.Logging.NLog.NLogLogger.html#Nuclei_Diagnostics_Logging_NLog_NLogLogger_Level
+  commentId: P:Nuclei.Diagnostics.Logging.NLog.NLogLogger.Level
+  fullName: Nuclei.Diagnostics.Logging.NLog.NLogLogger.Level
+- uid: Nuclei.Diagnostics.Logging.NLog.NLogLogger.Log(Nuclei.Diagnostics.Logging.LogMessage)
+  name: Log(LogMessage)
+  href: api/Nuclei.Diagnostics.Logging.NLog.NLogLogger.html#Nuclei_Diagnostics_Logging_NLog_NLogLogger_Log_Nuclei_Diagnostics_Logging_LogMessage_
+  commentId: M:Nuclei.Diagnostics.Logging.NLog.NLogLogger.Log(Nuclei.Diagnostics.Logging.LogMessage)
+  fullName: Nuclei.Diagnostics.Logging.NLog.NLogLogger.Log(Nuclei.Diagnostics.Logging.LogMessage)
+- uid: Nuclei.Diagnostics.Logging.NLog.NLogLogger.ShouldLog(Nuclei.Diagnostics.Logging.LogMessage)
+  name: ShouldLog(LogMessage)
+  href: api/Nuclei.Diagnostics.Logging.NLog.NLogLogger.html#Nuclei_Diagnostics_Logging_NLog_NLogLogger_ShouldLog_Nuclei_Diagnostics_Logging_LogMessage_
+  commentId: M:Nuclei.Diagnostics.Logging.NLog.NLogLogger.ShouldLog(Nuclei.Diagnostics.Logging.LogMessage)
+  fullName: Nuclei.Diagnostics.Logging.NLog.NLogLogger.ShouldLog(Nuclei.Diagnostics.Logging.LogMessage)
