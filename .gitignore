@@ -250,3 +250,6 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+build/
+_site/
+doc/Nuclei.Diagnostics.Logging.NLog.Documentation/docfx.json

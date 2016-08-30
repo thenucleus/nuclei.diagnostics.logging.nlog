@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Nuclei.Diagnostics.Logging.NLog</id>
+    <version>$VersionSemantic$</version>
+    <authors>Metamorpher</authors>
+    <owners>Metamorpher</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <projectUrl>https://github.com/Metamorpher/Nuclei.Diagnostics.Logging.NLog</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+      Provides an NLog based implementation of the loggers in Nuclei.Diagnostics.
+    </description>
+    <releaseNotes>
+      $ReleaseNotes$
+    </releaseNotes>
+    <dependencies>
+      $Dependencies$
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="$DirSrc$\Nuclei.Diagnostics.Logging.NLog\bin\$Configuration$\Nuclei.Diagnostics.Logging.NLog.dll" target="lib\net452" />
+    <file src="$DirSrc$\Nuclei.Diagnostics.Logging.NLog\bin\$Configuration$\Nuclei.Diagnostics.Logging.NLog.pdb" target="lib\net452" />
+    <file src="$DirSrc$\Nuclei.Diagnostics.Logging.NLog\bin\$Configuration$\Nuclei.Diagnostics.Logging.NLog.xml" target="lib\net452" />
+    <file src="$DirSrc$\Nuclei.Diagnostics.Logging.NLog\**\*.cs" target="src\Nuclei.Diagnostics.Logging.NLog" />
+  </files>
+</package>
